@@ -30,8 +30,9 @@ pipeline {
                 pip3 install urllib3==1.26.12
                 pip3 install boto3
                 """
-                dir("$env.WORKSPACE/edureka-project") {
+                dir("$env.WORKSPACE") {
                     sh """
+                    cd /var/lib/jenkins/workspace/edureka-cicd-project-2
                     sh -x install-script.sh
                     """
                 }
