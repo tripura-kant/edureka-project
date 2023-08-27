@@ -33,7 +33,7 @@ pipeline {
                 dir("$env.WORKSPACE") {
                     sh """
                     cd /var/lib/jenkins/workspace/edureka-cicd-project-2
-                    sh -x install-script.sh
+                    sudo sh -x install-script.sh
                     """
                 }
             }
