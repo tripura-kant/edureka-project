@@ -26,6 +26,7 @@ pipeline {
                     currentBuild.displayName = "Edureka CICD"
                 }
                 sh """
+                sudo yum install -y python3-pip
                 pip3 install python-jenkins==1.8.0
                 pip3 install urllib3==1.26.12
                 pip3 install boto3
