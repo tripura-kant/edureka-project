@@ -4,6 +4,7 @@
 yum update -y
 
 yum install -y python3-pip
+yum install unzip -y
 
 # Function to install a package if not already installed
 install_package() {
