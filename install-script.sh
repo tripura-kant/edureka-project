@@ -1,45 +1,33 @@
 #!/bin/bash
 
-# Update package repository and install necessary tools
-yum update -y
-yum install -y java-1.8.0-openjdk-devel git
+# Update package repository
+sudo yum update -y
 
-# Install Maven
-yum install -y wget
-wget https://apache.osuosl.org/maven/maven-3/3.8.4/binaries/apache-maven-3.8.4-bin.tar.gz
-tar -xzvf apache-maven-3.8.4-bin.tar.gz -C /opt
-ln -s /opt/apache-maven-3.8.4 /opt/maven
-echo 'export M2_HOME=/opt/maven' >> /etc/profile.d/maven.sh
-echo 'export PATH=${M2_HOME}/bin:${PATH}' >> /etc/profile.d/maven.sh
-chmod +x /etc/profile.d/maven.sh
-source /etc/profile.d/maven.sh
+# Install Java
+sudo yum install -y java*
+
+# Add Jenkins repository
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 
 # Install Jenkins
-wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-yum install -y jenkins
-systemctl start jenkins
-systemctl enable jenkins
+sudo yum install -y jenkins
 
-# Install Docker
-amazon-linux-extras install -y docker
-systemctl start docker
-systemctl enable docker
+# Start Jenkins
+sudo systemctl start jenkins
 
-# Install Ansible
-amazon-linux-extras install -y ansible
+# Enable Jenkins to start on boot
+sudo systemctl enable jenkins
 
-# Install kubectl for Kubernetes
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-chmod +x kubectl
-mv kubectl /usr/local/bin/
+# Open firewall port 8080
+sudo firewall-cmd --permanent --zone=public --add-port=8080/tcp
+sudo firewall-cmd --reload
 
-# Install Grafana
-yum install -y https://dl.grafana.com/oss/release/grafana-8.2.0-1.x86_64.rpm
-systemctl start grafana-server
-systemctl enable grafana-server
+# Retrieve initial admin password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
-# You'll need to manually configure Kubernetes and Docker registry settings
+# Provide instructions to the user
+echo "Jenkins installation is complete."
+echo "Access the Jenkins web UI by navigating to http://your-server-ip:8080"
+echo "Use the initial admin password provided above to complete the setup."
 
-# Finally, reboot to ensure all changes take effect
-reboot
