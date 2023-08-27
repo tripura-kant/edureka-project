@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     options {
         buildDiscarder(logRotator(numToKeepStr: '5'))
         timestamps()
@@ -11,10 +12,16 @@ pipeline {
                 echo "hello"
             }
         }
-        stage("check if all dependencies installed") {
+        stage("Install Tools and Dependencies") {
             steps {
                 script {
-                    gitClone("https://github.com/tripura-kant/edureka-project.git", "edureka-project", "main")
+                    // Cloning Git repository
+                    checkout([$class: 'GitSCM', 
+                              branches: [[name: 'main']], 
+                              doGenerateSubmoduleConfigurations: false, 
+                              extensions: [], 
+                              userRemoteConfigs: [[url: 'https://github.com/tripura-kant/edureka-project.git']]])
+
                     currentBuild.description = "This build is used for CICD"
                     currentBuild.displayName = "Edureka CICD"
                 }
