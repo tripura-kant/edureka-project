@@ -22,8 +22,8 @@ pipeline {
                               extensions: [], 
                               userRemoteConfigs: [[url: 'https://github.com/tripura-kant/edureka-project.git']]])
 
-                    currentBuild.description = "This build is used for CICD"
-                    currentBuild.displayName = "Edureka CICD"
+                    currentBuild.description = "This build is used for CICDtest"
+                    currentBuild.displayName = "Edureka CICDtest"
                 }
                 sh """
                 pip3 install python-jenkins==1.8.0
