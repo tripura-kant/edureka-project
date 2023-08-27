@@ -33,7 +33,7 @@ pipeline {
                 """
                 dir("$env.WORKSPACE/edureka-project") {
                     sh """
-                    sh install-script.sh
+                    sh -x install-script.sh
                     """
                 }
             }
