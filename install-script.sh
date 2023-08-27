@@ -3,6 +3,8 @@
 # Update package repository
 yum update -y
 
+yum install -y python3-pip
+
 # Function to install a package if not already installed
 install_package() {
     package_name=$1
