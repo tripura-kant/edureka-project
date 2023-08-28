@@ -1,5 +1,15 @@
-                sh "sudo docker build -t your-registry/edureka-cicd:${VERSION} ."
+#!/bin/bash
+docker stop $(docker ps -aq) 
+docker rm $(docker ps -aq)
 
-                // Deploy Docker container with the unique tag
-                cd /var/lib/jenkins/workspace/edureka-cicd-project-2
-                sh "sudo docker run -d -p 8081:8081 your-registry/edureka-cicd:${VERSION}"
+# Autoincrement the version
+VERSION=$(awk '{ print $1+1 }' version.txt)
+
+# Build Docker Image
+sudo docker build -t your-registry/edureka-cicd:${VERSION} .
+
+# Deploy Docker container with the unique tag
+sudo docker run -d -p 8081:8081 your-registry/edureka-cicd:${VERSION}
+
+# Save the incremented version back to the file
+echo ${VERSION} > version.txt
