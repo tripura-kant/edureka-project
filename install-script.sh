@@ -1,5 +1,5 @@
 #!/bin/bash
-
+chmod 777 /var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile/install-script.sh
 # Update package repository
 yum update -y
 
