@@ -35,6 +35,7 @@ pipeline {
                     pwd
                     ls
                     cd /var/lib/jenkins/workspace/edureka-project-ci/pipeline-3-package
+                    mvn clean
                     mvn package
                     """
                 }
