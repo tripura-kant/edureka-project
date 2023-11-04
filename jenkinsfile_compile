@@ -34,7 +34,7 @@ pipeline {
                     sh """
                     pwd
                     ls
-                    cd /var/lib/jenkins/workspace/compiling-source-code/XYZTechnologies
+                    cd /var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile
                     
                     mvn compile
                     """
