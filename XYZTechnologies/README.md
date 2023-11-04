@@ -1,1 +1,0 @@
-# xyztechnologies code
