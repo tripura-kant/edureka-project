@@ -2,4 +2,4 @@
   hosts: localhost
   tasks:
     - name: Apply Kubernetes Manifests
-      command: kubectl apply -f /path/to/your/kubernetes/manifests
+      command: kubectl apply -f /var/lib/jenkins/workspace/edureka-project-ci/edureka-project-final/k8s-deploy.yml
