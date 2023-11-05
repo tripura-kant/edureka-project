@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Execute the script.sh script
-                    sh './docker.sh'
+                    sh '/var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile/docker.sh'
                 }
             }
         }
