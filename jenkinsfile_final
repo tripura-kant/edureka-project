@@ -23,6 +23,14 @@ pipeline {
             }
         }
 
+        stage('Run Script') {
+            steps {
+                // Execute the script.sh script
+                sh './script.sh'
+    }
+}
+
+
         
     }
 }
