@@ -5,21 +5,21 @@ pipeline {
         stage('Compile Source Code') {
             steps {
                 // Execute the job for compiling source code
-                build job: 'Compile-Source-Code'
+                build job: 'pipeline-1-compile'
             }
         }
 
         stage('Test Source Code') {
             steps {
                 // Execute the job for testing source code
-                build job: 'Test-Source-Code'
+                build job: 'pipeline-2-test'
             }
         }
 
         stage('Package Code') {
             steps {
                 // Execute the job for packaging the code
-                build job: 'Package-Code'
+                build job: 'pipeline-3-package'
             }
         }
 
