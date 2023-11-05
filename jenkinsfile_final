@@ -24,10 +24,8 @@ pipeline {
                 // Dockerization steps
                 script {
                     // Build a Docker image
-                    sh 'docker build -t your-image-name:your-tag -f Dockerfile .'
+                    sh '/var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile/docker.sh'
 
-                    // Deploy to Docker container
-                    sh 'docker run -d -p 8080:8080 your-image-name:your-tag'
                 }
             }
         }
