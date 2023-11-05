@@ -26,6 +26,13 @@ pipeline {
                     // Build a Docker image
                     sh '/var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile/docker.sh'
 
+                    // Add Slack Notification
+                    slackSend(
+                        color: '#36a64f', // Choose a color for the success message
+                        message: "Job Succeeded: ${currentBuild.fullDisplayName}",
+                        channel: '#your-slack-channel', // Specify the Slack channel
+                        teamDomain: 'your-team-domain' // Replace with your Slack team domain
+                    )
                 }
             }
         }
