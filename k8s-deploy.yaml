@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edureka
+spec:
+  replicas: 3  # Number of desired replicas
+  selector:
+    matchLabels:
+      app: edureka
+  template:
+    metadata:
+      labels:
+        app: edureka
+    spec:
+      containers:
+        - name: edureka
+          image: tripurakant/edureka-cicd:1
+          ports:
+            - containerPort: 8080  # The port your application listens on
