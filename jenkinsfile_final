@@ -26,14 +26,10 @@ pipeline {
         stage('Run Script') {
             steps {
                 script {
-                // Execute the script.sh script
-                pwd
-                sh /var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile/docker.sh
-}
-    }
-}
-
-
-        
+                    // Execute the script.sh script
+                    sh './script.sh'
+                }
+            }
+        }
     }
 }
