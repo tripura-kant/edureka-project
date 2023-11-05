@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Compile Source Code') {
+            steps {
+                // Execute the job for compiling source code
+                build job: 'Compile-Source-Code'
+            }
+        }
+
+        stage('Test Source Code') {
+            steps {
+                // Execute the job for testing source code
+                build job: 'Test-Source-Code'
+            }
+        }
+
+        stage('Package Code') {
+            steps {
+                // Execute the job for packaging the code
+                build job: 'Package-Code'
+            }
+        }
+
+        stage('Dockerize and Deploy') {
+            steps {
+                // Execute a job to build and push the Docker image
+                build job: 'Build-and-Push-Docker-Image'
+
+                // You can add further steps for deploying to Kubernetes, etc.
+            }
+        }
+    }
+}
