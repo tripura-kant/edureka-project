@@ -27,7 +27,7 @@ pipeline {
             steps {
                 script {
                     // Execute the script.sh script
-                    sh './script.sh'
+                    sh './docker.sh'
                 }
             }
         }
