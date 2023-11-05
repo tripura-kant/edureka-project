@@ -29,9 +29,7 @@ pipeline {
                     // Add Slack Notification
                     slackSend(
                         color: '#36a64f', // Choose a color for the success message
-                        message: "Job Succeeded: ${currentBuild.fullDisplayName}",
-                        channel: '#your-slack-channel', // Specify the Slack channel
-                        teamDomain: 'your-team-domain' // Replace with your Slack team domain
+                        message: "Job Succeeded: ${currentBuild.fullDisplayName}"
                     )
                 }
             }
