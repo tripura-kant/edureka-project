@@ -37,8 +37,8 @@ pipeline {
                     ls
                     whoami
                     hostname
-                    cd /var/lib/jenkins/workspace/edureka-project-ci/pipeline-3-package
-                    sh /var/lib/jenkins/workspace/edureka-project-ci/pipeline-3-package/package.sh
+                    cd /var/lib/jenkins/workspace/edureka-project-ci/pipeline-3-package/XYZ Technologies
+                    mvn package
 
                     """
                 }
