@@ -1,5 +1,8 @@
 #!/bin/bash
- docker stop $(docker ps -aq) && docker rm $(docker ps -aq)
+
+# Stop and remove existing containers (force quitting errors)
+docker stop $(docker ps -aq) || true
+docker rm $(docker ps -aq) || true
 
 # Autoincrement the version
 VERSION=$(awk '{ print $1+1 }' version.txt)
