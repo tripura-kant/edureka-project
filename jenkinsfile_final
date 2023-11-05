@@ -26,7 +26,7 @@ pipeline {
         stage('Dockerize and Deploy') {
             steps {
                 // Execute a job to build and push the Docker image
-                // build job: 'Build-and-Push-Docker-Image'
+                
 
                 // You can add further steps for deploying to Kubernetes, etc.
             }
