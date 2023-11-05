@@ -1,0 +1,17 @@
+- name: Setup Prometheus Monitoring
+  hosts: localhost
+  tasks:
+    - name: Install Node Exporter
+      command: /path/to/node_exporter_installer.sh
+
+    - name: Configure Prometheus
+      copy:
+        src: /path/to/prometheus.yml
+        dest: /etc/prometheus/prometheus.yml
+      notify: Restart Prometheus
+      become: yes
+
+    - name: Restart Prometheus
+      systemd:
+        name: prometheus
+        state: restarted

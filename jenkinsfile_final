@@ -16,18 +16,36 @@ pipeline {
             }
         }
 
-        stage('Package Code') {
+        stage('Package Code and Dockerize') {
             steps {
                 // Execute the job for packaging the code
                 build job: 'pipeline-3-package'
+
+                // Dockerization steps
+                script {
+                    // Build a Docker image
+                    sh 'docker build -t your-image-name:your-tag -f Dockerfile .'
+
+                    // Deploy to Docker container
+                    sh 'docker run -d -p 8080:8080 your-image-name:your-tag'
+                }
             }
         }
 
-        stage('Run Script') {
+        stage('Deploy on Kubernetes') {
             steps {
+                // Apply Kubernetes manifests using Ansible
                 script {
-                    // Execute the script.sh script
-                    sh '/var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile/docker.sh'
+                    sh 'ansible-playbook ansible_playbook_k8s.yml'
+                }
+            }
+        }
+
+        stage('Prometheus Monitoring Setup') {
+            steps {
+                // Install Node Exporter and configure Prometheus
+                script {
+                    sh 'ansible-playbook ansible_prometheus_setup.yml'
                 }
             }
         }
