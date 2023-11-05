@@ -25,9 +25,11 @@ pipeline {
 
         stage('Run Script') {
             steps {
+                script {
                 // Execute the script.sh script
                 pwd
                 sh './script.sh'
+}
     }
 }
 
