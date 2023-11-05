@@ -28,7 +28,7 @@ pipeline {
                 script {
                 // Execute the script.sh script
                 pwd
-                sh './script.sh'
+                sh /var/lib/jenkins/workspace/edureka-project-ci/pipeline-1-compile/docker.sh
 }
     }
 }
